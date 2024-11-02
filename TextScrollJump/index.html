@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TextScrollJump</title>
+  <link rel="stylesheet" href="../../base.css">
+  <script type="importmap">{ "imports": { "ixfx/": "/ixfx/" } } </script>
+</head>
+
+<body>
+  <style>
+    *,
+    *:before,
+    *:after,
+    html,
+    body {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --hue: 100;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --bg: hsl(var(--hue), 10%, 80%);
+      --fg: hsl(var(--hue), 90%, 10%);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #ixfx-data-display {
+      top: unset !important;
+      right: unset !important;
+      bottom: 0 !important;
+      left: 0 !important;
+    }
+
+    #holderOfAll {
+      rotate: 45deg;
+    }
+
+    #holder {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      gap: 10px;
+    }
+
+
+    #div4 {
+      height: 600px;
+      width: 600px;
+      border-radius: 55%;
+      position: relative;
+      z-index: 2;
+      color: white;
+      /* Set a text color that stands out */
+      font-size: 6em;
+      /* Adjust text size if needed */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      rotate: -45deg;
+
+
+    }
+
+
+    .div {
+      background-color: hsl(0, 0%, 0%);
+      height: 100px;
+      width: 100px;
+      border-radius: 20%;
+      /* position: absolute; */
+      transform-origin: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      color: white;
+      /* Set a text color that stands out */
+      font-size: 3em;
+      /* Adjust text size if needed */
+      display: flex;
+    }
+
+
+    #dynamicDiv {
+      background-color: lightblue;
+      position: relative;
+      left: 50px;
+      top: 50px;
+    }
+
+
+    #divText {
+      background-color: black;
+      /* height: 10000px; */
+      width: 90%;
+      color: white;
+      /* Set a text color that stands out */
+      font-size: 2em;
+    }
+
+
+    section {
+      z-index: 100;
+    }
+  </style>
+  <section>
+    <a id="lnkNewWindow" href="../sender/index.html" target="_blank">New
+      window</a>
+    <!-- If you're not using the panel, comment-out these lines... -->
+    <!-- <section class="s" id="sourceSection">
+      <nav><button title="Close frame" id="btnCloseFrame">x</button>
+        <h1>Source</h1>
+        <a id="lnkNewWindow" href="../sender/index.html" target="_blank">New
+          window</a>
+      </nav>
+      <iframe src="../sender/index.html"></iframe>
+    </section>
+    <script type="module">
+      document.querySelector(`#btnCloseFrame`)?.addEventListener(`click`, event => {
+        document.querySelector(`#sourceSection`)?.remove();
+        const element = event.target;
+        if (element) /** @type {HTMLElement} */(element).remove(); // Remove button too
+      });
+      document.querySelector(`#lnkNewWindow`)?.addEventListener(`click`, event => {
+        document.querySelector(`#sourceSection`)?.remove();
+      });
+    </script> -->
+    <!-- ----  -->
+
+    <!-- <div id="holderOfAll">
+
+      <div id="div4">1</div>
+
+      <div id="holder">
+
+        <div id="div1" class="div"></div>
+        <div id="div2" class="div"></div>
+        <div id="div3" class="div"></div>
+
+      </div>
+
+    </div>
+    <div id="divFree" class="div"></div> -->
+
+
+    <div id="divText">
+      1
+      <br>
+      <br>
+      Once, a team of interaction designers was tasked with creating a user-friendly app for a local
+      bakery. They wanted it to be as delightful and engaging as the pastries themselves. After weeks of brainstorming,
+      they settled on a quirky feature: a virtual cupcake that would "dance" when you tapped it.
+
+      Excited, they programmed the cupcake to jiggle and emit cheerful sounds. On launch day, they invited a group of
+      users to test the app. Everything was going smoothly until one user, in a moment of enthusiasm, tapped the cupcake
+      50 times in a row.
+
+      To their horror, the app responded by launching a barrage of confetti, fireworks, and a voice saying,
+      “Congratulations! You’ve won a lifetime supply of cupcakes!” While the team thought it was hilarious, the user was
+      suddenly inundated with notifications from the bakery, promising an endless stream of sugary treats.
+
+      Realizing the unintended consequences of their interaction design, the team quickly implemented a cooldown feature
+      for the cupcake. They learned that while making things fun is important, it’s also crucial to consider the limits
+      of enthusiasm—especially when it comes to sweets!
+      <br>
+      <br>
+      <b>2</b>
+      <br>
+      <br>
+
+      In a bustling city, a team of interaction designers at a tech startup was excited to work on their latest project:
+      a mobile app for a trendy new cafe called "The Whimsical Spoon." The cafe was known for its extravagant coffee
+      creations, quirky decor, and a resident cat named Mochi who had a knack for photobombing customer selfies. The
+      designers wanted to capture this playful spirit in their app.
+      <br>
+      <br>
+      <b>3</b>
+      <br>
+      <br>
+
+      After several brainstorming sessions filled with coffee-fueled creativity, they decided to include a feature where
+      users could interact with a virtual version of Mochi. Tapping the screen would make Mochi do silly things—like
+      chase a laser pointer or play with a ball of yarn. The team was ecstatic, believing this would keep users engaged
+      and encourage them to share their experiences on social media.
+      <br>
+      <br>
+      <b>4</b>
+      <br>
+      <br>
+      As the launch day approached, they added a surprise element: if a user tapped Mochi 10 times in quick succession,
+      the app would unlock a “Mochi Dance Party” feature. This would play a catchy tune and animate Mochi in a hilarious
+      dance sequence. They thought it was a brilliant idea—after all, who wouldn’t want to see an animated cat
+      breakdance while sipping their cappuccino?
+
+      <br>
+      <br>
+      <b>5</b>
+      <br>
+      <br>
+      On launch day, they gathered a diverse group of testers—coffee lovers, cat enthusiasts, and even some skeptical
+      techies. Everyone was excited to try the app. As they began interacting with Mochi, laughter filled the room. The
+      animations were cute, and users loved sending virtual coffee cups to each other. But then, one particularly
+      enthusiastic user, a barista named Sam, decided to see just how many times he could tap Mochi.
+      <br>
+      <br>
+      <b>6</b>
+      <br>
+      <br>
+      With each tap, the excitement in the room grew. “Come on, Mochi! Dance for me!” he yelled, tapping furiously.
+      Before long, he hit the magic number: 10 taps in rapid succession. The app exploded with confetti, a chorus of
+      “Meow-velous!” echoed, and Mochi began dancing like a disco king. Everyone cheered, and Sam felt like a superstar.
+      <br>
+      <br>
+      <b>7</b>
+      <br>
+      <br>
+
+      But as the dance party continued, the app started to glitch. Users were suddenly bombarded with notifications:
+      “Congratulations! You’ve unlocked the Mochi Dance Party!” Each notification came with more confetti, more dancing,
+      and increasingly absurd messages, like “Mochi has now become a world-famous DJ! Book your tickets now!”
+      <br>
+      <br>
+      <b>8</b>
+      <br>
+      <br>
+
+      What started as a fun experience quickly spiraled into chaos. Users’ phones began vibrating uncontrollably, and
+      the cafe’s social media was flooded with videos of Mochi’s dance party. People who hadn’t even downloaded the app
+      were suddenly tagging the cafe in posts about the virtual cat DJ.
+      <br>
+      <br>
+      <b>9</b>
+      <br>
+      <br>
+
+      The designers, watching the pandemonium unfold, couldn’t believe their eyes. “This wasn’t what we envisioned!” one
+      of them exclaimed, half-laughing and half-panicking. They quickly huddled to brainstorm a solution. They decided
+      to introduce a cooldown feature to prevent the Mochi Dance Party from being triggered too often.
+      <br>
+      <br>
+      <b>10</b>
+      <br>
+      <br>
+
+      After some quick coding, they rolled out an update to contain the virtual chaos. Users were relieved to see the
+      feature was now limited to one dance party per day, with a fun little timer counting down until the next
+      opportunity to join Mochi’s disco.
+
+      <br>
+      <br>
+      <b>11</b>
+      <br>
+      <br>
+      In the end, the app became a massive hit, and the "Mochi Dance Party" feature gained a cult following. The
+      designers learned a valuable lesson about the unpredictability of user interactions, especially when it involves a
+      lovable cat and a bit too much caffeine. And as for Sam? He became a local legend, known as the “Mochi Master,”
+      and was often found at The Whimsical Spoon, sharing his adventures with anyone who’d listen—preferably over a
+      latte with a side of cat-themed pastries.
+      <br>
+      <br>
+      <b>12</b>
+      <br>
+      <br>
+      Once, a team of interaction designers was tasked with creating a user-friendly app for a local
+      bakery. They wanted it to be as delightful and engaging as the pastries themselves. After weeks of brainstorming,
+      they settled on a quirky feature: a virtual cupcake that would "dance" when you tapped it.
+
+      Excited, they programmed the cupcake to jiggle and emit cheerful sounds. On launch day, they invited a group of
+      users to test the app. Everything was going smoothly until one user, in a moment of enthusiasm, tapped the cupcake
+      50 times in a row.
+
+      To their horror, the app responded by launching a barrage of confetti, fireworks, and a voice saying,
+      “Congratulations! You’ve won a lifetime supply of cupcakes!” While the team thought it was hilarious, the user was
+      suddenly inundated with notifications from the bakery, promising an endless stream of sugary treats.
+
+      Realizing the unintended consequences of their interaction design, the team quickly implemented a cooldown feature
+      for the cupcake. They learned that while making things fun is important, it’s also crucial to consider the limits
+      of enthusiasm—especially when it comes to sweets!
+      <br>
+      <br>
+      <b>13</b>
+      <br>
+      <br>
+      In a bustling city, a team of interaction designers at a tech startup was excited to work on their latest project:
+      a mobile app for a trendy new cafe called "The Whimsical Spoon." The cafe was known for its extravagant coffee
+      creations, quirky decor, and a resident cat named Mochi who had a knack for photobombing customer selfies. The
+      designers wanted to capture this playful spirit in their app.
+      <br>
+      <br>
+      <b>14</b>
+      <br>
+      <br>
+
+      After several brainstorming sessions filled with coffee-fueled creativity, they decided to include a feature where
+      users could interact with a virtual version of Mochi. Tapping the screen would make Mochi do silly things—like
+      chase a laser pointer or play with a ball of yarn. The team was ecstatic, believing this would keep users engaged
+      and encourage them to share their experiences on social media.
+      <br>
+      <br>
+      <b>15</b>
+      <br>
+      <br>
+      As the launch day approached, they added a surprise element: if a user tapped Mochi 10 times in quick succession,
+      the app would unlock a “Mochi Dance Party” feature. This would play a catchy tune and animate Mochi in a hilarious
+      dance sequence. They thought it was a brilliant idea—after all, who wouldn’t want to see an animated cat
+      breakdance while sipping their cappuccino?
+
+      <br>
+      <br>
+      <b>16</b>
+      <br>
+      <br>
+      On launch day, they gathered a diverse group of testers—coffee lovers, cat enthusiasts, and even some skeptical
+      techies. Everyone was excited to try the app. As they began interacting with Mochi, laughter filled the room. The
+      animations were cute, and users loved sending virtual coffee cups to each other. But then, one particularly
+      enthusiastic user, a barista named Sam, decided to see just how many times he could tap Mochi.
+      <br>
+      <br>
+      <b>17</b>
+      <br>
+      <br>
+      With each tap, the excitement in the room grew. “Come on, Mochi! Dance for me!” he yelled, tapping furiously.
+      Before long, he hit the magic number: 10 taps in rapid succession. The app exploded with confetti, a chorus of
+      “Meow-velous!” echoed, and Mochi began dancing like a disco king. Everyone cheered, and Sam felt like a superstar.
+      <br>
+      <br>
+      <b>18</b>
+      <br>
+      <br>
+
+      But as the dance party continued, the app started to glitch. Users were suddenly bombarded with notifications:
+      “Congratulations! You’ve unlocked the Mochi Dance Party!” Each notification came with more confetti, more dancing,
+      and increasingly absurd messages, like “Mochi has now become a world-famous DJ! Book your tickets now!”
+      <br>
+      <br>
+      <b>19</b>
+      <br>
+      <br>
+
+      What started as a fun experience quickly spiraled into chaos. Users’ phones began vibrating uncontrollably, and
+      the cafe’s social media was flooded with videos of Mochi’s dance party. People who hadn’t even downloaded the app
+      were suddenly tagging the cafe in posts about the virtual cat DJ.
+      <br>
+      <br>
+      <b>20</b>
+      <br>
+      <br>
+
+      The designers, watching the pandemonium unfold, couldn’t believe their eyes. “This wasn’t what we envisioned!” one
+      of them exclaimed, half-laughing and half-panicking. They quickly huddled to brainstorm a solution. They decided
+      to introduce a cooldown feature to prevent the Mochi Dance Party from being triggered too often.
+      <br>
+      <br>
+      <b>21</b>
+      <br>
+      <br>
+      After some quick coding, they rolled out an update to contain the virtual chaos. Users were relieved to see the
+      feature was now limited to one dance party per day, with a fun little timer counting down until the next
+      opportunity to join Mochi’s disco.
+
+      <br>
+      <br>
+      <b>22</b>
+      <br>
+      <br>
+      In the end, the app became a massive hit, and the "Mochi Dance Party" feature gained a cult following. The
+      designers learned a valuable lesson about the unpredictability of user interactions, especially when it involves a
+      lovable cat and a bit too much caffeine. And as for Sam? He became a local legend, known as the “Mochi Master,”
+      and was often found at The Whimsical Spoon, sharing his adventures with anyone who’d listen—preferably over a
+      latte with a side of cat-themed pastries.
+
+
+      <br>
+      <br>
+      <b>23</b>
+      <br>
+      <br>
+      Once, a team of interaction designers was tasked with creating a user-friendly app for a local
+      bakery. They wanted it to be as delightful and engaging as the pastries themselves. After weeks of brainstorming,
+      they settled on a quirky feature: a virtual cupcake that would "dance" when you tapped it.
+
+      Excited, they programmed the cupcake to jiggle and emit cheerful sounds. On launch day, they invited a group of
+      users to test the app. Everything was going smoothly until one user, in a moment of enthusiasm, tapped the cupcake
+      50 times in a row.
+
+      To their horror, the app responded by launching a barrage of confetti, fireworks, and a voice saying,
+      “Congratulations! You’ve won a lifetime supply of cupcakes!” While the team thought it was hilarious, the user was
+      suddenly inundated with notifications from the bakery, promising an endless stream of sugary treats.
+
+      Realizing the unintended consequences of their interaction design, the team quickly implemented a cooldown feature
+      for the cupcake. They learned that while making things fun is important, it’s also crucial to consider the limits
+      of enthusiasm—especially when it comes to sweets!
+      <br>
+      <br>
+      <b>24</b>
+      <br>
+      <br>
+      In a bustling city, a team of interaction designers at a tech startup was excited to work on their latest project:
+      a mobile app for a trendy new cafe called "The Whimsical Spoon." The cafe was known for its extravagant coffee
+      creations, quirky decor, and a resident cat named Mochi who had a knack for photobombing customer selfies. The
+      designers wanted to capture this playful spirit in their app.
+      <br>
+      <br>
+      <b>25</b>
+      <br>
+      <br>
+      After several brainstorming sessions filled with coffee-fueled creativity, they decided to include a feature where
+      users could interact with a virtual version of Mochi. Tapping the screen would make Mochi do silly things—like
+      chase a laser pointer or play with a ball of yarn. The team was ecstatic, believing this would keep users engaged
+      and encourage them to share their experiences on social media.
+      <br>
+      <br>
+      <b>26</b>
+      <br>
+      <br>
+      As the launch day approached, they added a surprise element: if a user tapped Mochi 10 times in quick succession,
+      the app would unlock a “Mochi Dance Party” feature. This would play a catchy tune and animate Mochi in a hilarious
+      dance sequence. They thought it was a brilliant idea—after all, who wouldn’t want to see an animated cat
+      breakdance while sipping their cappuccino?
+
+      <br>
+      <br>
+      <b>27</b>
+      <br>
+      <br>
+      On launch day, they gathered a diverse group of testers—coffee lovers, cat enthusiasts, and even some skeptical
+      techies. Everyone was excited to try the app. As they began interacting with Mochi, laughter filled the room. The
+      animations were cute, and users loved sending virtual coffee cups to each other. But then, one particularly
+      enthusiastic user, a barista named Sam, decided to see just how many times he could tap Mochi.
+      <br>
+      <br>
+      <b>28</b>
+      <br>
+      <br>
+      With each tap, the excitement in the room grew. “Come on, Mochi! Dance for me!” he yelled, tapping furiously.
+      Before long, he hit the magic number: 10 taps in rapid succession. The app exploded with confetti, a chorus of
+      “Meow-velous!” echoed, and Mochi began dancing like a disco king. Everyone cheered, and Sam felt like a superstar.
+      <br>
+      <br>
+      <b>29</b>
+      <br>
+      <br>
+      But as the dance party continued, the app started to glitch. Users were suddenly bombarded with notifications:
+      “Congratulations! You’ve unlocked the Mochi Dance Party!” Each notification came with more confetti, more dancing,
+      and increasingly absurd messages, like “Mochi has now become a world-famous DJ! Book your tickets now!”
+      <br>
+      <br>
+      <b>30</b>
+      <br>
+      <br>
+      What started as a fun experience quickly spiraled into chaos. Users’ phones began vibrating uncontrollably, and
+      the cafe’s social media was flooded with videos of Mochi’s dance party. People who hadn’t even downloaded the app
+      were suddenly tagging the cafe in posts about the virtual cat DJ.
+      <br>
+      <br>
+      <b>31</b>
+      <br>
+      <br>
+      The designers, watching the pandemonium unfold, couldn’t believe their eyes. “This wasn’t what we envisioned!” one
+      of them exclaimed, half-laughing and half-panicking. They quickly huddled to brainstorm a solution. They decided
+      to introduce a cooldown feature to prevent the Mochi Dance Party from being triggered too often.
+      <br>
+      <br>
+      <b>32</b>
+      <br>
+      <br>
+      After some quick coding, they rolled out an update to contain the virtual chaos. Users were relieved to see the
+      feature was now limited to one dance party per day, with a fun little timer counting down until the next
+      opportunity to join Mochi’s disco.
+
+      <br>
+      <br>
+      <b>33</b>
+      <br>
+      <br>
+      In the end, the app became a massive hit, and the "Mochi Dance Party" feature gained a cult following. The
+      designers learned a valuable lesson about the unpredictability of user interactions, especially when it involves a
+      lovable cat and a bit too much caffeine. And as for Sam? He became a local legend, known as the “Mochi Master,”
+      and was often found at The Whimsical Spoon, sharing his adventures with anyone who’d listen—preferably over a
+      latte with a side of cat-themed pastries.
+
+    </div>
+
+
+
+
+
+
+    <script type="module" src="script.js"></script>
+  </section>
+</body>
+
+</html>
